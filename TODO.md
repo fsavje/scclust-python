@@ -1,11 +1,9 @@
-# scclust-python
-
 ### Specification:
 
 * Only depend on Python's standard library and NumPy/SciPy.
 * Work for both Python 2.7 and 3.
-* Use cKDTree in SciPy for nearest neighbor search functions. Perhaps with support for ordinary KDTree as well.
-* Wrapping the scclust library with the standard CPython C API.
+* Use cKDTree in SciPy for nearest neighbor search functions.
+* Wrapping the scclust library with the standard CPython C API or Cython.
 * Be distributed through PyPI (https://pypi.python.org/pypi)
 * If possible, try to make it compatible with Anaconda (don't know how much it differs from PyPI).
 * Mac and Linux versions to start with.
@@ -25,21 +23,11 @@
 
 ### References:
 
-**Style**:
-
-* https://www.python.org/dev/peps/pep-0008/
-* http://docs.python-guide.org/en/latest/writing/style/
-
 **Making packages:**
 
-* https://www.pypa.io/en/latest/
 * https://packaging.python.org
-* https://python-packaging.readthedocs.io
 * https://setuptools.readthedocs.io/en/latest/setuptools.html
-* https://github.com/pypa/sampleproject
-* https://docs.python.org/2/tutorial/modules.html
 * https://docs.python.org/3/tutorial/modules.html
-* https://conda.io/docs/
 
 **C extensions:**
 
@@ -58,3 +46,15 @@
 
 * http://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html
 * http://python3porting.com/cextensions.html
+
+**Style:**
+
+* https://www.python.org/dev/peps/pep-0008/
+
+**Other:**
+
+* http://docs.python-guide.org/en/latest/writing/style/
+* https://www.pypa.io/en/latest/
+* https://python-packaging.readthedocs.io
+* https://github.com/pypa/sampleproject
+* https://conda.io/docs/
