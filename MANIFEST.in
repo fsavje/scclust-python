@@ -1,0 +1,6 @@
+include LICENSE
+
+include libscclust/LICENSE
+recursive-include libscclust *.c *.h
+recursive-include libsccwrap *.c *.h
+recursive-include scclust *.py
