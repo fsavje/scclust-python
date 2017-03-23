@@ -6,11 +6,11 @@
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include <numpy/arrayobject.h>
 
-#include "make_clustering.h"
+#include "sc_clustering.h"
 
 static PyMethodDef libsccwrap_methods[] = {
-	{"make_clustering", sccw_make_clustering, METH_VARARGS, "make_clustering"},
-	{NULL,              NULL,                  0,            NULL}
+	{"sc_clustering", sccw_sc_clustering, METH_VARARGS, "sc_clustering"},
+	{NULL,            NULL,               0,            NULL}
 };
 
 #if PY_MAJOR_VERSION >= 3

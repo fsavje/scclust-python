@@ -32,6 +32,7 @@
 **C extensions:**
 
 * http://www.scipy-lectures.org/advanced/interfacing_with_c/interfacing_with_c.html
+* http://www.scipy-lectures.org/advanced/advanced_numpy/index.html#advanced-numpy
 * http://scipy-cookbook.readthedocs.io/items/C_Extensions_NumPy_arrays.html
 * https://docs.scipy.org/doc/numpy/user/c-info.how-to-extend.html
 * https://docs.python.org/2/c-api/

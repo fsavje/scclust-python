@@ -9,7 +9,7 @@ libsccwrap = Extension(
                     sources=[
                         # Wrapper files
                         'libsccwrap/init.c',
-                        'libsccwrap/make_clustering.c',
+                        'libsccwrap/sc_clustering.c',
 
                         # scclust files
                         'libscclust/src/data_set.c',
@@ -23,7 +23,8 @@ libsccwrap = Extension(
                         'libscclust/src/nng_core.c',
                         'libscclust/src/nng_findseeds.c',
                         'libscclust/src/scclust_spi.c',
-                        'libscclust/src/scclust.c'
+                        'libscclust/src/scclust.c',
+                        'libscclust/src/utilities.c'
                     ],
                     include_dirs=[
                         'libscclust/include',

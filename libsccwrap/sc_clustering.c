@@ -1,6 +1,6 @@
 #define NO_IMPORT_ARRAY
 
-#include "make_clustering.h"
+#include "sc_clustering.h"
 
 #include <Python.h>
 // http://docs.scipy.org/doc/numpy/reference/c-api.deprecations.html
@@ -9,16 +9,16 @@
 #include <scclust.h>
 
 
-PyObject* sccw_make_clustering(PyObject* const self,
-                               PyObject* const args)
+PyObject* sccw_sc_clustering(PyObject* const self,
+                             PyObject* const args)
 {
 	PyArrayObject* in_array;
 	if (!PyArg_ParseTuple(args, "O!", &PyArray_Type, &in_array)) return NULL;
 	if (PyArray_NDIM(in_array) != 2) return NULL;
 	if (PyArray_TYPE(in_array) != NPY_DOUBLE) return NULL;
 
-	const uintmax_t num_data_points = (uintmax_t) PyArray_SHAPE(in_array)[0];
-	const uintmax_t num_dimensions = (uintmax_t) PyArray_SHAPE(in_array)[1];
+	const uint64_t num_data_points = (uint64_t) PyArray_SHAPE(in_array)[0];
+	const uint32_t num_dimensions = (uint32_t) PyArray_SHAPE(in_array)[1];
 
 	int* const cluster_labels = malloc(sizeof(int[num_data_points]));
 	if (cluster_labels == NULL) return NULL;
@@ -38,10 +38,10 @@ PyObject* sccw_make_clustering(PyObject* const self,
 	                               &clustering);
 	if(ec != SCC_ER_OK) return NULL;
 
-	scc_ClusterOptions options = scc_default_cluster_options;
+	scc_ClusterOptions options = scc_get_default_options();
 	options.size_constraint = 2;
 
-	ec = scc_make_clustering(data_set, clustering, &options);
+	ec = scc_sc_clustering(data_set, &options, clustering);
 	if(ec != SCC_ER_OK) return NULL;
 
 	scc_free_clustering(&clustering);
