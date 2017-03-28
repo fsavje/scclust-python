@@ -3,31 +3,14 @@
 
 from setuptools import setup, Extension
 import numpy
+from distutils.core import setup
+from distutils.extension import Extension
+from Cython.Build import cythonize
 
 libsccwrap = Extension(
-                    'libsccwrap',
-                    sources=[
-                        # Wrapper files
-                        'libsccwrap/init.c',
-                        'libsccwrap/sc_clustering.c',
-
-                        # scclust files
-                        'libscclust/src/data_set.c',
-                        'libscclust/src/digraph_core.c',
-                        'libscclust/src/digraph_operations.c',
-                        'libscclust/src/dist_search_imp.c',
-                        'libscclust/src/error.c',
-                        'libscclust/src/hierarchical_clustering.c',
-                        'libscclust/src/nng_batch_clustering.c',
-                        'libscclust/src/nng_clustering.c',
-                        'libscclust/src/nng_core.c',
-                        'libscclust/src/nng_findseeds.c',
-                        'libscclust/src/scclust_spi.c',
-                        'libscclust/src/scclust.c',
-                        'libscclust/src/utilities.c'
-                    ],
+                    'sc_clustering', ['libsccwrap/sc_clustering.pyx'],
                     include_dirs=[
-                        'libscclust/include',
+                        'libscclust/include', ".",
                         numpy.get_include()],
                     define_macros=[
                         ('NDEBUG', None),
@@ -68,7 +51,7 @@ setup(
     ],
 
     packages=['scclust'],
-    ext_modules=[libsccwrap],
+    ext_modules=cythonize(libsccwrap),
     #zip_safe=False,
     install_requires=[
         'numpy',
