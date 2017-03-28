@@ -14,4 +14,4 @@ raw_data = numpy.array([( 0.088316633,  0.807443027),
 
 my_clusters = sc_clustering(raw_data)
 
-print my_clusters
+print(my_clusters)
