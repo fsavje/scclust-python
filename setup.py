@@ -1,13 +1,25 @@
-# See:
-# https://setuptools.readthedocs.io/en/latest/setuptools.html
-
-from setuptools import setup, Extension
-from Cython.Build import cythonize
 import numpy
+import os.path
+import sys
+from setuptools import setup, Extension, Command
+
+def compile_cython():
+    from Cython.Build import cythonize
+    cythonize(['libsccwrap/sc_clustering.pyx'])
+
+if os.path.isfile(".cython"):
+    compile_cython()
+
+class cython(Command):
+    user_options = []
+    def initialize_options(self): pass
+    def finalize_options(self): pass
+    def run(self):
+        compile_cython()
 
 libsccwrap = Extension(
                     'sc_clustering',
-                    sources=['libsccwrap/sc_clustering.pyx'],
+                    sources=['libsccwrap/sc_clustering.c'],
                     include_dirs=[
                         'libscclust/include',
                         numpy.get_include()
@@ -25,8 +37,6 @@ setup(
     keywords='clustering',
     license='GPLv3',
     url='https://github.com/fsavje/scclust-python',
-
-    # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         'Development Status :: 1 - Planning',
         'Intended Audience :: Science/Research',
@@ -46,10 +56,9 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: Implementation :: CPython'
     ],
-
+    cmdclass={'cython':cython},
     packages=['scclust'],
-    ext_modules=cythonize(libsccwrap),
-    #zip_safe=False,
+    ext_modules=[libsccwrap],
     install_requires=[
         'numpy',
         'scipy'

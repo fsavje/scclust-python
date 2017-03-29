@@ -34,6 +34,11 @@
 * http://cython.readthedocs.io/en/latest/src/tutorial/numpy.html
 * http://cython.readthedocs.io/en/latest/src/userguide/memoryviews.html
 
+**Cython:**
+
+* http://cython.readthedocs.io/en/latest/src/reference/compilation.html#distributing-cython-modules
+* http://stackoverflow.com/questions/4505747/how-should-i-structure-a-python-package-that-contains-cython-code
+
 **C extensions:**
 
 * http://www.scipy-lectures.org/advanced/interfacing_with_c/interfacing_with_c.html
