@@ -5,7 +5,7 @@ from setuptools import setup, Extension, Command
 
 def compile_cython():
     from Cython.Build import cythonize
-    cythonize(['libsccwrap/sc_clustering.pyx'])
+    cythonize(['scclust/scclust.pyx'])
 
 if os.path.isfile(".cython"):
     compile_cython()
@@ -17,9 +17,9 @@ class cython(Command):
     def run(self):
         compile_cython()
 
-libsccwrap = Extension(
-                    'sc_clustering',
-                    sources=['libsccwrap/sc_clustering.c'],
+scclust_ext = Extension(
+                    'scclust',
+                    sources=['scclust/scclust.c'],
                     include_dirs=[
                         'libscclust/include',
                         numpy.get_include()
@@ -56,9 +56,8 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: Implementation :: CPython'
     ],
-    cmdclass={'cython':cython},
-    packages=['scclust'],
-    ext_modules=[libsccwrap],
+    cmdclass={'cython': cython},
+    ext_modules=[scclust_ext],
     install_requires=[
         'numpy',
         'scipy'

@@ -42,7 +42,7 @@ cdef extern from "scclust.h":
 
 @cython.wraparound(False)
 @cython.boundscheck(False)
-def sccw_sc_clustering(np.ndarray[np.npy_double, ndim=2] in_array):
+def sc_clustering(np.ndarray[np.npy_double, ndim=2] in_array):
 
     cdef uint64_t num_data_points = in_array.shape[0]
     cdef uint32_t num_dimensions = in_array.shape[1]

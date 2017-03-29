@@ -26,4 +26,4 @@ var/
 .installed.cfg
 *.egg
 
-libsccwrap/sc_clustering.c
+scclust/scclust.c
