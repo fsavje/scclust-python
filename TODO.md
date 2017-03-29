@@ -29,6 +29,11 @@
 * https://setuptools.readthedocs.io/en/latest/setuptools.html
 * https://docs.python.org/3/tutorial/modules.html
 
+**Numpy**:
+
+* http://cython.readthedocs.io/en/latest/src/tutorial/numpy.html
+* http://cython.readthedocs.io/en/latest/src/userguide/memoryviews.html
+
 **C extensions:**
 
 * http://www.scipy-lectures.org/advanced/interfacing_with_c/interfacing_with_c.html

@@ -1,5 +1,5 @@
 import numpy
-from scclust import sc_clustering
+import sc_clustering
 
 raw_data = numpy.array([( 0.088316633,  0.807443027),
                         (-1.080004390,  0.969638235),
@@ -12,6 +12,6 @@ raw_data = numpy.array([( 0.088316633,  0.807443027),
                         (-0.641513488,  0.417153186),
                         ( 1.509341003, -0.026534633)])
 
-my_clusters = sc_clustering(raw_data)
+my_clusters = sc_clustering.sccw_sc_clustering(raw_data)
 
 print(my_clusters)

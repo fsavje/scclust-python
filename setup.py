@@ -2,20 +2,17 @@
 # https://setuptools.readthedocs.io/en/latest/setuptools.html
 
 from setuptools import setup, Extension
-import numpy
-from distutils.core import setup
-from distutils.extension import Extension
 from Cython.Build import cythonize
+import numpy
 
 libsccwrap = Extension(
-                    'sc_clustering', ['libsccwrap/sc_clustering.pyx'],
+                    'sc_clustering',
+                    sources=['libsccwrap/sc_clustering.pyx'],
                     include_dirs=[
-                        'libscclust/include', ".",
-                        numpy.get_include()],
-                    define_macros=[
-                        ('NDEBUG', None),
-                        ('PY_ARRAY_UNIQUE_SYMBOL', 'libsccwrap_ARRAY_API'),
-                    ]
+                        'libscclust/include',
+                        numpy.get_include()
+                    ],
+                    define_macros=[('NDEBUG', None)]
                 )
 
 setup(
