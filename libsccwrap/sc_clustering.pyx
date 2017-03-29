@@ -6,11 +6,21 @@ from libc.stdint cimport uint8_t, uint16_t, uint32_t
 from libc.stdint cimport int64_t, uint64_t
 from libc.stdlib cimport malloc, free
 from cpython.ref cimport PyObject
+from cpython.object cimport PyObject
+from cpython.type cimport type
+
+import __builtin__
 np.import_array()
 
 
 DTYPE = np.float
 ctypedef np.float_t DTYPE_t
+
+cdef extern from "Python.h":
+    ctypedef int Py_intptr_t
+
+cdef extern from "numpy/arrayobject.h":
+    object PyArray_Type(ndarray arr)
 
 
 
@@ -43,8 +53,6 @@ cdef extern from "libscclust/include/scclust.h":
   void scc_free_data_set(scc_DataSet** data_set)
 
 
-
-
 cdef extern from "libscclust/src/error.h":
   scc_ErrorCode iscc_make_error__(scc_ErrorCode ec,
                                 const char* msg,
@@ -54,5 +62,8 @@ cdef extern from "libscclust/src/error.h":
 
 
 
-cdef sccw_sc_clustering(PyObject* const self, PyObject* const args):
+cpdef sccw_sc_clustering(args):
+    in_array = []
+    if not (PyArg_ParseTuple(args, "O!", PyArray_Type, in_array)):
+        return None
     return None
