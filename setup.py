@@ -19,7 +19,25 @@ class cython(Command):
 
 scclust_ext = Extension(
                     'scclust',
-                    sources=['scclust/scclust.c'],
+                    sources=[
+                        # Wrapper files
+                        'scclust/scclust.c',
+
+                        # scclust files
+                        'libscclust/src/data_set.c',
+                        'libscclust/src/digraph_core.c',
+                        'libscclust/src/digraph_operations.c',
+                        'libscclust/src/dist_search_imp.c',
+                        'libscclust/src/error.c',
+                        'libscclust/src/hierarchical_clustering.c',
+                        'libscclust/src/nng_batch_clustering.c',
+                        'libscclust/src/nng_clustering.c',
+                        'libscclust/src/nng_core.c',
+                        'libscclust/src/nng_findseeds.c',
+                        'libscclust/src/scclust_spi.c',
+                        'libscclust/src/scclust.c',
+                        'libscclust/src/utilities.c'
+                    ],
                     include_dirs=[
                         'libscclust/include',
                         numpy.get_include()
