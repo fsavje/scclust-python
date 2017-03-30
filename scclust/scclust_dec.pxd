@@ -1,5 +1,6 @@
 cimport cython
 from libc.stdint cimport int64_t, uint64_t, uint32_t
+from libcpp cimport bool
 
 
 cdef extern from "scclust.h":
@@ -8,11 +9,9 @@ cdef extern from "scclust.h":
     cdef struct scc_Clustering
     cdef struct scc_ClusterOptions
     ctypedef int scc_Clabel
-    ctypedef enum scc_SeedMethod
-    ctypedef enum scc_UnassignedMethod
-    ctypedef enum scc_RadiusMethod
-    ctypedef struct scc_ClusterOptions
-    ctypedef struct scc_ClusteringStats
+    cdef struct scc_SeedMethod
+    cdef struct scc_RadiusMethod
+    cdef struct scc_ClusteringStats
 
 
     bool scc_get_latest_error(size_t len_error_message_buffer,
