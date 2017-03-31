@@ -26,12 +26,6 @@
 #ifndef SCC_SCCLUST_INTERNAL_HG
 #define SCC_SCCLUST_INTERNAL_HG
 
-#ifdef __cplusplus
-// So g++ defines integer limits
-#define __STDC_LIMIT_MACROS
-#endif
-
-#include <limits.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -49,14 +43,14 @@ typedef uint32_t iscc_ArcIndex;
 
 #define ISCC_M_ARCINDEX_TYPE_uint32_t
 
-static const scc_Clabel SCC_CLABEL_MAX = INT_MAX;
-static const scc_PointIndex ISCC_POINTINDEX_MAX_PI = INT_MAX;
-static const uintmax_t ISCC_POINTINDEX_MAX = INT_MAX;
+static const scc_Clabel SCC_CLABEL_MAX = UINT32_MAX;
+static const scc_PointIndex ISCC_POINTINDEX_MAX_PI = UINT32_MAX;
+static const uintmax_t ISCC_POINTINDEX_MAX = UINT32_MAX;
 static const uintmax_t ISCC_ARCINDEX_MAX = UINT32_MAX;
 static const uintmax_t ISCC_TYPELABEL_MAX = 65535;
 
-#define ISCC_M_CLABEL_MAX INT_MAX
-#define ISCC_M_POINTINDEX_MAX INT_MAX
+#define ISCC_M_CLABEL_MAX UINT32_MAX
+#define ISCC_M_POINTINDEX_MAX UINT32_MAX
 #define ISCC_M_ARCINDEX_MAX UINT32_MAX
 #define ISCC_M_TYPELABEL_MAX 65535
 

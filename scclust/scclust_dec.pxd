@@ -5,8 +5,8 @@ from libcpp cimport bool
 
 cdef extern from "scclust.h":
 
-    ctypedef int scc_PointIndex
-    ctypedef int scc_Clabel
+    ctypedef uint32_t scc_PointIndex
+    ctypedef uint32_t scc_Clabel
     ctypedef int scc_TypeLabel
 
     cdef enum scc_ErrorCode:

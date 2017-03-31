@@ -26,12 +26,6 @@
 #ifndef SCC_SCCLUST_HG
 #define SCC_SCCLUST_HG
 
-#ifdef __cplusplus
-// So g++ defines integer limits
-#define __STDC_LIMIT_MACROS
-#endif
-
-#include <limits.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -119,11 +113,11 @@ bool scc_get_latest_error(size_t len_error_message_buffer,
  *  Number of data points in any clustering problem must be strictly less
  *  than the maximum number that can be stored in #scc_PointIndex.
  */
-typedef int scc_PointIndex;
+typedef uint32_t scc_PointIndex;
 
 
 /// Macro for data point ID type.
-#define SCC_M_POINTINDEX_TYPE_int
+#define SCC_M_POINTINDEX_TYPE_uint32_t
 
 
 /** Type used for cluster labels.
@@ -132,19 +126,19 @@ typedef int scc_PointIndex;
  *  Number of clusters in any clustering problem must be strictly less
  *  than the maximum number that can be stored in #scc_Clabel.
  */
-typedef int scc_Clabel;
+typedef uint32_t scc_Clabel;
 
 
 /// Macro for cluster labels type.
-#define SCC_M_CLABEL_TYPE_int
+#define SCC_M_CLABEL_TYPE_uint32_t
 
 
 /// Label given to unassigned vertices.
-static const scc_Clabel SCC_CLABEL_NA = INT_MIN;
+static const scc_Clabel SCC_CLABEL_NA = UINT32_MAX;
 
 
 /// Macro for unassigned label.
-#define SCC_M_CLABEL_NA INT_MIN
+#define SCC_M_CLABEL_NA UINT32_MAX
 
 
 /** Type used to indicate data point type.
