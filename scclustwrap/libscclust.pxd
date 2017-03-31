@@ -1,7 +1,5 @@
-cimport cython
 from libc.stdint cimport int32_t, uint32_t, uint64_t
 from libcpp cimport bool
-
 
 cdef extern from "scclust.h":
 

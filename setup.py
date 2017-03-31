@@ -5,7 +5,7 @@ from setuptools import setup, Extension, Command
 
 def compile_cython():
     from Cython.Build import cythonize
-    cythonize(['scclust/scclust.pyx'])
+    cythonize(['scclustwrap/scclustwrap.pyx'])
 
 if os.path.isfile(".cython"):
     compile_cython()
@@ -17,11 +17,11 @@ class cython(Command):
     def run(self):
         compile_cython()
 
-scclust_ext = Extension(
-                    'scclust',
+scclustwrap = Extension(
+                    'scclustwrap',
                     sources=[
                         # Wrapper files
-                        'scclust/scclust.c',
+                        'scclustwrap/scclustwrap.c',
 
                         # scclust files
                         'libscclust/src/data_set.c',
@@ -74,10 +74,11 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: Implementation :: CPython'
     ],
-    cmdclass={'cython': cython},
-    ext_modules=[scclust_ext],
+    packages=['scclust'],
+    ext_modules=[scclustwrap],
     install_requires=[
         'numpy',
         'scipy'
-    ]
+    ],
+    cmdclass={'cython': cython}
 )

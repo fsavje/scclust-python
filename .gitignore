@@ -26,4 +26,4 @@ var/
 .installed.cfg
 *.egg
 
-scclust/scclust.c
+scclustwrap/scclustwrap.c

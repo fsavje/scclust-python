@@ -2,4 +2,5 @@ include LICENSE
 
 include libscclust/LICENSE
 recursive-include libscclust *.c *.h
-recursive-include scclust *.c *.pyx
+recursive-include scclust *.py
+recursive-include scclustwrap *.c *.pxd *.pyx
