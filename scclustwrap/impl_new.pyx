@@ -7,7 +7,6 @@ def tmp_sc_clustering(np.ndarray[np.double_t, ndim=2, mode="c"] data_array not N
 
     # Make cluster label array
     cdef np.ndarray[np.uint32_t, ndim=1, mode="c"] cluster_labels = np.empty([num_data_points], dtype=np.uint32, order='C')
-
     cdef sc.scc_ErrorCode ec
     cdef sc.scc_DataSet* data_set
     ec = sc.scc_init_data_set(num_data_points,
