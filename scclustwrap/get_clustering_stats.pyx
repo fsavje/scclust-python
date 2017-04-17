@@ -19,6 +19,7 @@ def get_clustering_stats(np.ndarray[np.double_t, ndim=2, mode="c"] data_array no
     ec = sc.scc_init_existing_clustering(num_data_points, num_clusters,
                                       &cluster_labels,false
                                       &clustering)
+    check_error_code(ec)
     sc.get_cluster_stats(&clustering, &data_array, &out_stats)
 
     #make python dict with out_stats
