@@ -11,4 +11,17 @@ def get_clustering_stats(np.ndarray[np.double_t, ndim=2, mode="c"] data_array no
 
     # For inspiration, see: https://github.com/fsavje/scclust-R/blob/master/src/utilities.c#L130
 
+    cdef sc.scc_DataSet data_set
+    cdef sc.scc_Clustering* cluster
+    cdef sc.scc_ErrorCode ec
+    cdef sc.scc_ClusteringStats* out_stats
+
+    ec = sc.scc_init_existing_clustering(num_data_points, num_clusters,
+                                      &cluster_labels,false
+                                      &clustering)
+    sc.get_cluster_stats(&clustering, &data_array, &out_stats)
+
+    #make python dict with out_stats
+
+    sc.scc_free_clustering(&clustering)
     return None

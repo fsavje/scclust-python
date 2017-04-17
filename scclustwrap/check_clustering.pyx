@@ -25,7 +25,7 @@ def check_clustering(np.ndarray[np.uint32_t, ndim=1, mode="c"] clustering_labels
 
     options.size_constraint = 2
     cdef bool result = false
-    scc_check_clustering( &clustering, options, result)
+    scc_check_clustering( &clustering, options, &result)
 
     sc.scc_free_clustering(&clustering)
 
