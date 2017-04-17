@@ -14,7 +14,7 @@ def check_clustering(np.ndarray[np.uint32_t, ndim=1, mode="c"] clustering_labels
     cdef sc.scc_Clustering* clustering
     cdef sc.scc_ErrorCode ec
     ec = sc.scc_init_existing_clustering(num_data_points, num_clusters,
-                                      &cluster_labels,false
+                                      &cluster_labels,false,
                                       &clustering)
 
     check_error_code(ec)

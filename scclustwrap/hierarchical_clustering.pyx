@@ -1,4 +1,4 @@
-def hierarchical_clustering(np.ndarray[np.double_t, ndim=2, mode="c"] data_array not None,
+def hierarchical_clustering(np.ndarray[np.double_t, ndim=2, mode="c"] data_array not None, uint32_t numclusters,
                             uint32_t size_constraint,
                             bint batch_assign):
 
@@ -12,4 +12,22 @@ def hierarchical_clustering(np.ndarray[np.double_t, ndim=2, mode="c"] data_array
 
     # For inspiration, see: https://github.com/fsavje/scclust-R/blob/master/src/hierarchical.c
 
-    return None
+    cdef sc.scc_DataSet data_set
+    cdef np.ndarray[np.uint32_t, ndim=1, mode="c"] output_labels
+    output_labels = data_array[0]
+    cdef sc.scc_Clustering* clustering
+    cdef sc.scc_ErrorCode ec
+    ec = sc.scc_init_existing_clustering(num_data_points, num_clusters,
+                                      &output_labels, false
+                                      &clustering)
+    scc_hierarchical_clustering(data_array, size_constraint,
+                                      batch_assign, &clustering)
+
+    cdef uint64 num_clusters
+    scc_ErrorCode scc_get_clustering_info(&clustering,
+                                          num_data_points,
+                                          num_clusters)
+    sc.scc_free_clustering(&clustering)
+    sc.scc_free_clustering(&data_set)
+
+    return (output_labels, num_clusters)
