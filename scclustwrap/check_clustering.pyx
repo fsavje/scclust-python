@@ -20,7 +20,7 @@ def check_clustering(np.ndarray[np.uint32_t, ndim=1, mode="c"] clustering_labels
     check_error_code(ec)
     cdef sc.scc_ClusterOptions options = sc.scc_get_default_options()
 
-    #Check if options contains a value for key and assign 
+    #Check if options contains a value for key and assign
 
     if('options_version' in options):
         options.options_version = dict['options_version']
